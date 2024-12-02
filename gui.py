@@ -1,172 +1,78 @@
-from PyQt5.QtWidgets import QApplication, QVBoxLayout, QLabel, QLineEdit, QPushButton, QWidget, QHBoxLayout, QFrame
-from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QFont, QIcon, QPixmap
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QMessageBox
+from inference_engine import LensExpertSystem
 
 
-class LensExpertUI(QWidget):
+class LensDesignApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.is_maximized = False
-        self.init_ui()
-        self.offset = QPoint()
-
-    def init_ui(self):
-        # Set the window size and remove the default title bar
-        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setWindowTitle("Camera Lens Design Expert System")
         self.setGeometry(100, 100, 600, 400)
 
-        # Set custom app title icon
-        self.setWindowIcon(QIcon("icon.png"))
+        self.init_ui()
+        self.expert_system = LensExpertSystem()
 
-        # Apply dark theme and font
-        self.setStyleSheet("""
-            QWidget {
-                background-color: #1f1f1f;
-                color: #ffffff;
-                font-family: 'Ubuntu';
-                font-size: 14px;
-            }
-            QLineEdit {
-                background-color: #333;
-                border: 2px solid #555;
-                border-radius: 8px;
-                padding: 8px;
-                color: #ffffff;
-                font-size: 14px;
-            }
-            QLineEdit:focus {
-                border: 2px solid #00adb5;
-            }
-            QPushButton {
-                background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
-                    stop:0 #00adb5, stop:1 #007c91);
-                color: #ffffff;
-                font-size: 14px;
-                border: none;
-                border-radius: 8px;
-                padding: 10px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
-                    stop:0 #007c91, stop:1 #005f6b);
-            }
-            QLabel#resultLabel {
-                font-size: 16px;
-                color: #ffffff;
-                padding: 10px;
-                background-color: #2b2b2b;
-                border: 2px solid #444;
-                border-radius: 8px;
-                font-weight: bold;
-            }
-        """)
+    def init_ui(self):
+        layout = QVBoxLayout()
 
-        # Create main layout
-        main_layout = QVBoxLayout()
-        main_layout.setContentsMargins(0, 0, 0, 0)
+        # Input fields
+        self.focal_length_input = QLineEdit()
+        self.focal_length_input.setPlaceholderText("Enter focal length (mm)")
+        layout.addWidget(QLabel("Focal Length:"))
+        layout.addWidget(self.focal_length_input)
 
-        # Create custom title bar
-        title_bar = QFrame()
-        title_bar.setStyleSheet("background-color: #1f1f1f;")
-        title_bar.setFixedHeight(40)
+        self.aperture_input = QLineEdit()
+        self.aperture_input.setPlaceholderText("Enter aperture (f-number)")
+        layout.addWidget(QLabel("Aperture:"))
+        layout.addWidget(self.aperture_input)
 
-        title_layout = QHBoxLayout()
-        title_layout.setContentsMargins(10, 0, 10, 0)
+        self.material_input = QLineEdit()
+        self.material_input.setPlaceholderText(
+            "Enter lens material (e.g., BK7)")
+        layout.addWidget(QLabel("Lens Material:"))
+        layout.addWidget(self.material_input)
 
-        # Add title icon to the custom title bar
-        title_icon = QLabel()
-        title_icon.setPixmap(QIcon("icon.png").pixmap(
-            20, 20))  # Scaled to 20x20 pixels
-        title_layout.addWidget(title_icon)
+        # Submit button
+        self.submit_button = QPushButton("Generate Lens Design")
+        self.submit_button.clicked.connect(self.generate_lens_design)
+        layout.addWidget(self.submit_button)
 
-        title_label = QLabel("Lens Designer")
-        title_label.setStyleSheet(
-            "color: #ffffff; font-size: 16px; font-weight: bold;")
-        title_layout.addWidget(title_label)
-        title_layout.addStretch()
+        # Output display
+        self.output_label = QLabel("Output will be displayed here.")
+        layout.addWidget(self.output_label)
 
-        # Add minimize button with custom icon
-        minimize_button = QPushButton()
-        minimize_button.setFixedSize(30, 30)
-        minimize_button.setIcon(QIcon("minimize.png"))
-        minimize_button.clicked.connect(self.showMinimized)
-        title_layout.addWidget(minimize_button)
+        # Main widget setup
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
 
-        # Add maximize/restore button with custom icons
-        self.maximize_button = QPushButton()
-        self.maximize_button.setFixedSize(30, 30)
-        self.maximize_button.setIcon(QIcon("maximize.png"))
-        self.maximize_button.clicked.connect(self.toggle_maximize_restore)
-        title_layout.addWidget(self.maximize_button)
+    def generate_lens_design(self):
+        # Gather inputs
+        focal_length = self.focal_length_input.text()
+        aperture = self.aperture_input.text()
+        material = self.material_input.text()
 
-        # Add close button with custom icon
-        close_button = QPushButton()
-        close_button.setFixedSize(30, 30)
-        close_button.setIcon(QIcon("close.png"))
-        close_button.clicked.connect(self.close)
-        title_layout.addWidget(close_button)
+        # Validate inputs
+        if not (focal_length and aperture and material):
+            QMessageBox.warning(self, "Input Error",
+                                "All fields are required!")
+            return
 
-        title_bar.setLayout(title_layout)
-
-        # Add widgets below the custom title bar
-        content_layout = QVBoxLayout()
-        content_layout.setContentsMargins(20, 20, 20, 20)
-        self.focal_label = QLabel("Focal Length (mm):")
-        self.focal_input = QLineEdit()
-        self.design_button = QPushButton("Design Lens")
-        self.result_label = QLabel("Result: ")
-        self.result_label.setObjectName("resultLabel")
-
-        content_layout.addWidget(self.focal_label)
-        content_layout.addWidget(self.focal_input)
-        content_layout.addWidget(self.design_button)
-        content_layout.addWidget(self.result_label)
-
-        # Combine layouts
-        main_layout.addWidget(title_bar)
-        main_layout.addLayout(content_layout)
-
-        # Set layout to the main window
-        self.setLayout(main_layout)
-
-        # Connect button functionality
-        self.design_button.clicked.connect(self.design_lens)
-
-    def design_lens(self):
         try:
-            focal_length = int(self.focal_input.text())
-            if focal_length < 50:
-                self.result_label.setText("Use plastic molding for lenses.")
-            else:
-                self.result_label.setText("Use glass for precision.")
+            # Run expert system
+            output = self.expert_system.run_expert_system(
+                focal_length=float(focal_length),
+                aperture=float(aperture),
+                material=material
+            )
+            self.output_label.setText(f"Recommended Design:\n{output}")
         except ValueError:
-            self.result_label.setText("Please enter a valid number.")
+            QMessageBox.warning(self, "Input Error",
+                                "Invalid numerical input.")
+        except Exception as e:
+            QMessageBox.critical(self, "Error", str(e))
 
-    def toggle_maximize_restore(self):
-        # Toggle between maximized and normal window state
-        if self.is_maximized:
-            self.showNormal()
-        else:
-            self.showMaximized()
-        self.is_maximized = not self.is_maximized
-
-    # Implement dragging functionality for frameless window
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.offset = event.pos()
-
-    def mouseMoveEvent(self, event):
-        if self.offset is not None and event.buttons() == Qt.LeftButton:
-            self.move(self.pos() + event.pos() - self.offset)
-
-    def mouseReleaseEvent(self, event):
-        self.offset = None
-
-
-# Create the application and run the window
-app = QApplication([])
-app.setFont(QFont("Ubuntu", 10))
-window = LensExpertUI()
-window.show()
-app.exec_()
+    def run(self):
+        app = QApplication(sys.argv)
+        self.show()
+        sys.exit(app.exec_())
