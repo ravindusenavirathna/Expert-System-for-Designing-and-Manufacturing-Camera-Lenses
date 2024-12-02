@@ -1,0 +1,193 @@
+{
+  "materials": [
+    {
+      "id": "bk7",
+      "name": "BK7 Glass",
+      "refractive_index": 1.5168,
+      "abbe_number": 64.17,
+      "thermal_expansion": 7.1,
+      "density": 2.51,
+      "applications": ["photography", "telescopes", "microscopy"],
+      "advantages": ["High transparency", "Low cost"],
+      "disadvantages": ["Limited thermal stability"],
+      "cost_per_unit": 5.5
+    },
+    {
+      "id": "fused_silica",
+      "name": "Fused Silica",
+      "refractive_index": 1.4585,
+      "abbe_number": 67.82,
+      "thermal_expansion": 0.54,
+      "density": 2.2,
+      "applications": ["astronomy", "laser optics", "professional photography"],
+      "advantages": ["High thermal stability", "High UV transmittance"],
+      "disadvantages": ["Expensive", "Harder to process"],
+      "cost_per_unit": 15.0
+    },
+    {
+      "id": "plastic",
+      "name": "Plastic",
+      "refractive_index": 1.49,
+      "abbe_number": 58.0,
+      "thermal_expansion": 80.0,
+      "density": 1.18,
+      "applications": ["smartphones", "eyeglasses", "wide-angle photography"],
+      "advantages": ["Low cost", "Lightweight", "Easy to mold"],
+      "disadvantages": ["Limited optical performance", "Easily scratched"],
+      "cost_per_unit": 2.0
+    }
+  ],
+  "lens_types": [
+    {
+      "id": "aspheric",
+      "name": "Aspheric Lens",
+      "aberration_reduction": ["spherical", "coma"],
+      "advantages": ["Compact size", "High precision"],
+      "disadvantages": ["Complex manufacturing"],
+      "suitable_applications": ["smartphones", "wide-angle photography"],
+      "preferred_materials": ["plastic", "BK7 Glass"]
+    },
+    {
+      "id": "achromatic",
+      "name": "Achromatic Lens",
+      "aberration_reduction": ["chromatic"],
+      "advantages": ["Eliminates color fringing", "Good optical performance"],
+      "disadvantages": ["Heavier", "More expensive"],
+      "suitable_applications": ["telescopes", "microscopy", "astronomy"],
+      "preferred_materials": ["BK7 Glass", "Fused Silica"]
+    },
+    {
+      "id": "telephoto",
+      "name": "Telephoto Lens",
+      "aberration_reduction": ["distortion"],
+      "advantages": ["Compact design for long focal lengths"],
+      "disadvantages": ["Expensive", "Complex assembly"],
+      "suitable_applications": ["sports photography", "wildlife photography"],
+      "preferred_materials": ["BK7 Glass"]
+    }
+  ],
+  "manufacturing_processes": [
+    {
+      "id": "precision_grinding",
+      "name": "Precision Grinding",
+      "description": "A high-precision process for shaping and polishing glass lenses.",
+      "tolerance": 0.01,
+      "compatible_materials": ["BK7 Glass", "Fused Silica"],
+      "cost_multiplier": 1.5
+    },
+    {
+      "id": "injection_molding",
+      "name": "Injection Molding",
+      "description": "A process for producing plastic lenses by injecting molten plastic into a mold.",
+      "tolerance": 0.1,
+      "compatible_materials": ["plastic"],
+      "cost_multiplier": 1.2
+    },
+    {
+      "id": "diamond_turning",
+      "name": "Diamond Turning",
+      "description": "A high-precision process used to create complex lens shapes like aspheric lenses.",
+      "tolerance": 0.005,
+      "compatible_materials": ["Plastic", "BK7 Glass"],
+      "cost_multiplier": 2.0
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule_1",
+      "conditions": {
+        "application": "photography",
+        "focal_length_range": [10, 50]
+      },
+      "actions": {
+        "lens_type": "aspheric",
+        "material": "plastic",
+        "manufacturing_process": "injection_molding"
+      }
+    },
+    {
+      "id": "rule_2",
+      "conditions": {
+        "application": "telescopes",
+        "focal_length_range": [50, 500]
+      },
+      "actions": {
+        "lens_type": "achromatic",
+        "material": "BK7 Glass",
+        "manufacturing_process": "precision_grinding"
+      }
+    },
+    {
+      "id": "rule_3",
+      "conditions": {
+        "application": "smartphones",
+        "budget": "low"
+      },
+      "actions": {
+        "lens_type": "aspheric",
+        "material": "plastic",
+        "manufacturing_process": "injection_molding"
+      }
+    },
+    {
+      "id": "rule_4",
+      "conditions": {
+        "application": "sports photography",
+        "focal_length_range": [100, 300]
+      },
+      "actions": {
+        "lens_type": "telephoto",
+        "material": "BK7 Glass",
+        "manufacturing_process": "precision_grinding"
+      }
+    },
+    {
+      "id": "rule_5",
+      "conditions": {
+        "application": "astronomy",
+        "focal_length_range": [300, 1000]
+      },
+      "actions": {
+        "lens_type": "achromatic",
+        "material": "Fused Silica",
+        "manufacturing_process": "precision_grinding"
+      }
+    },
+    {
+      "id": "rule_6",
+      "conditions": {
+        "application": "microscopy",
+        "focal_length_range": [10, 100]
+      },
+      "actions": {
+        "lens_type": "achromatic",
+        "material": "BK7 Glass",
+        "manufacturing_process": "diamond_turning"
+      }
+    },
+    {
+      "id": "rule_7",
+      "conditions": {
+        "application": "wide-angle photography",
+        "focal_length_range": [5, 35]
+      },
+      "actions": {
+        "lens_type": "aspheric",
+        "material": "plastic",
+        "manufacturing_process": "injection_molding"
+      }
+    },
+    {
+      "id": "rule_8",
+      "conditions": {
+        "application": "professional photography",
+        "budget": "high"
+      },
+      "actions": {
+        "lens_type": "achromatic",
+        "material": "Fused Silica",
+        "manufacturing_process": "diamond_turning"
+      }
+    }
+  ]
+}
