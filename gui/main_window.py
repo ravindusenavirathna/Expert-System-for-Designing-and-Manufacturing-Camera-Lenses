@@ -91,7 +91,7 @@ class MainWindow(QMainWindow):
         # Input Form Group
         self.form_group = QGroupBox("Enter Criteria")
         self.form_layout = QFormLayout()
-        self.input_fields = {}  # To store dynamically generated input fields
+        self.input_fields = {}
         self.form_group.setLayout(self.form_layout)
         main_layout.addWidget(self.form_group)
 
@@ -130,7 +130,7 @@ class MainWindow(QMainWindow):
             if widget is not None:
                 widget.deleteLater()
 
-        self.input_fields.clear()  # Clear stored input fields
+        self.input_fields.clear()
         self.current_engine = self.rule_engines.get(context, None)
 
         if not self.current_engine:
@@ -201,11 +201,11 @@ class MainWindow(QMainWindow):
 
         # Process results based on match levels
         if result.get("exact_match"):
-            color = "#4CAF50"  # Green for exact match
+            color = "#4CAF50"
             message = self.format_message(
                 context, result["exact_match"], color)
         else:
-            color = "#FFC107"  # Yellow for suggestion
+            color = "#FFC107"
             message = self.format_message(
                 context, result["suggestion"], color, match_score=result.get("match_score"))
 
@@ -267,8 +267,7 @@ class MainWindow(QMainWindow):
         rules = self.current_engine.rules
 
         for field, value in criteria.items():
-            if value == "select":  # Missing field
-                # Predict value by finding the most common value in the rules
+            if value == "select":
                 possible_values = [rule["if"][field]
                                    for rule in rules if field in rule["if"]]
                 if possible_values:
