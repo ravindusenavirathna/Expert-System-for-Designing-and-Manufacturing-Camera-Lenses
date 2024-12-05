@@ -198,11 +198,21 @@ class RuleEngine:
 # Example Usage
 if __name__ == "__main__":
     # Create engines for each context
+    supplier_engine = RuleEngine("knowledge_base/supplier_rules.json")
     inventory_engine = RuleEngine("knowledge_base/inventory_rules.json")
     logistic_engine = RuleEngine("knowledge_base/logistic_rules.json")
     diagnostic_engine = RuleEngine("knowledge_base/diagnostic_rules.json")
 
     # Define criteria for testing
+
+    user_criteria_supplier = {
+        "cost": "low",
+        "quality": "excellent",
+        "reliability": "excellent",
+        "sustainability": "outstanding",
+        "delivery time": "short"
+    }
+
     user_criteria_inventory = {
         "demand_forecast": "high",
         "stock_level": "low",
@@ -223,6 +233,10 @@ if __name__ == "__main__":
     }
 
     # Evaluate Inventory
+
+    supplier_result = supplier_engine.evaluate(user_criteria_inventory)
+    print("Inventory Evaluation:", supplier_result)
+
     inventory_result = inventory_engine.evaluate(user_criteria_inventory)
     print("Inventory Evaluation:", inventory_result)
 
