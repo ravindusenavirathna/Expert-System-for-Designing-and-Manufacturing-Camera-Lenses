@@ -1,68 +1,68 @@
 [
   {
     "if": {
-      "demand_forecast": "high",
-      "stock_level": "low",
-      "lead_time": "short"
+      "demand forecast": "high",
+      "stock level": "low",
+      "lead time": "short"
     },
     "then": {
       "action": "Place an urgent order.",
-      "recommended_stock": "Increase to 150% of forecasted demand."
+      "recommended stock": "Increase to 150% of forecasted demand."
     }
   },
   {
     "if": {
-      "demand_forecast": "low",
-      "stock_level": "high",
-      "lead_time": "long"
+      "demand forecast": "low",
+      "stock level": "high",
+      "lead time": "long"
     },
     "then": {
       "action": "Halt new orders.",
-      "recommended_stock": "Reduce stock by 30%."
+      "recommended stock": "Reduce stock by 30%."
     }
   },
   {
     "if": {
-      "demand_forecast": "medium",
-      "stock_level": "medium",
-      "lead_time": "medium"
+      "demand forecast": "medium",
+      "stock level": "medium",
+      "lead time": "medium"
     },
     "then": {
       "action": "Maintain current stock levels.",
-      "recommended_stock": "Match forecast demand."
+      "recommended stock": "Match forecast demand."
     }
   },
   {
     "if": {
-      "demand_forecast": "high",
-      "stock_level": "medium",
-      "lead_time": "long"
+      "demand forecast": "high",
+      "stock level": "medium",
+      "lead time": "long"
     },
     "then": {
       "action": "Place a priority order.",
-      "recommended_stock": "Stock to cover 120% of forecast demand."
+      "recommended stock": "Stock to cover 120% of forecast demand."
     }
   },
   {
     "if": {
-      "demand_forecast": "low",
-      "stock_level": "low",
-      "lead_time": "short"
+      "demand forecast": "low",
+      "stock level": "low",
+      "lead time": "short"
     },
     "then": {
       "action": "No immediate action required.",
-      "recommended_stock": "Maintain current levels."
+      "recommended stock": "Maintain current levels."
     }
   },
   {
     "if": {
-      "demand_forecast": "medium",
-      "stock_level": "high",
-      "lead_time": "short"
+      "demand forecast": "medium",
+      "stock level": "high",
+      "lead time": "short"
     },
     "then": {
       "action": "Gradually lower stock levels.",
-      "recommended_stock": "Target a 15% reduction in stock."
+      "recommended stock": "Target a 15% reduction in stock."
     }
   }
 ]

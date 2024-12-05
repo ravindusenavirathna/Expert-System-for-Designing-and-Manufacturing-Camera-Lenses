@@ -1,5 +1,3 @@
-# modules/inference_engine.py
-
 import json
 from difflib import SequenceMatcher
 
@@ -26,15 +24,26 @@ class RuleEngine:
         Returns:
             list: List of rules loaded from the JSON file.
         """
-        with open(self.rule_file, "r") as f:
-            return json.load(f)
+        try:
+            with open(self.rule_file, "r") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print(
+                f"Error: {self.rule_file} not found. Starting with an empty rule set.")
+            return []
+        except Exception as e:
+            print(f"Error loading rules: {e}")
+            return []
 
     def save_rules(self):
         """
         Save the current rules back to the rule file.
         """
-        with open(self.rule_file, "w") as f:
-            json.dump(self.rules, f, indent=4)
+        try:
+            with open(self.rule_file, "w") as f:
+                json.dump(self.rules, f, indent=4)
+        except Exception as e:
+            print(f"Error saving rules: {e}")
 
     def validate_rule(self, new_rule):
         """
@@ -188,40 +197,39 @@ class RuleEngine:
 
 # Example Usage
 if __name__ == "__main__":
-    engine = RuleEngine("knowledge_base/supplier_rules.json")
+    # Create engines for each context
+    inventory_engine = RuleEngine("knowledge_base/inventory_rules.json")
+    logistic_engine = RuleEngine("knowledge_base/logistic_rules.json")
+    diagnostic_engine = RuleEngine("knowledge_base/diagnostic_rules.json")
 
-    # Criteria input from user
-    user_criteria = {
-        "cost": "low",
-        "quality": "excellent",
-        "reliability": "good",
-        "sustainability": "outstanding",
-        "delivery_time": "short"
+    # Define criteria for testing
+    user_criteria_inventory = {
+        "demand_forecast": "high",
+        "stock_level": "low",
+        "lead_time": "short"
     }
 
-    # Evaluate criteria
-    evaluation = engine.evaluate(user_criteria)
-    if evaluation["exact_match"]:
-        print("Exact Match Found:", evaluation["exact_match"])
-    else:
-        print("No exact match found.")
-        print("Closest Suggestion:", evaluation["suggestion"])
-        print("Match Score:", evaluation["match_score"])
-
-    # Add a new rule
-    new_rule = {
-        "if": {
-            "cost": "medium",
-            "quality": "high",
-            "reliability": "excellent",
-            "sustainability": "good",
-            "delivery_time": "medium"
-        },
-        "then": "Supplier Beta is recommended for balanced options."
+    user_criteria_logistics = {
+        "distance": "short",
+        "load": "light",
+        "carrier_availability": "high",
+        "cost": "low"
     }
-    print(engine.add_rule(new_rule))
 
-    # Suggest improvements to input
-    suggestions = engine.suggest_improvements(user_criteria)
-    for suggestion in suggestions:
-        print("Suggestion:", suggestion)
+    user_criteria_diagnostics = {
+        "issue": "inventory shortage",
+        "cause": "unexpected demand",
+        "response_time": "slow"
+    }
+
+    # Evaluate Inventory
+    inventory_result = inventory_engine.evaluate(user_criteria_inventory)
+    print("Inventory Evaluation:", inventory_result)
+
+    # Evaluate Logistics
+    logistics_result = logistic_engine.evaluate(user_criteria_logistics)
+    print("Logistics Evaluation:", logistics_result)
+
+    # Evaluate Diagnostics
+    diagnostic_result = diagnostic_engine.evaluate(user_criteria_diagnostics)
+    print("Diagnostics Evaluation:", diagnostic_result)

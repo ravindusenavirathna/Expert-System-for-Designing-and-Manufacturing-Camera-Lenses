@@ -3,11 +3,11 @@
     "if": {
       "distance": "short",
       "load": "light",
-      "carrier_availability": "high",
+      "carrier availability": "high",
       "cost": "low"
     },
     "then": {
-      "mode_of_transport": "Truck",
+      "mode of transport": "Truck",
       "priority": "Standard Delivery"
     }
   },
@@ -15,11 +15,11 @@
     "if": {
       "distance": "medium",
       "load": "medium",
-      "carrier_availability": "medium",
+      "carrier availability": "medium",
       "cost": "medium"
     },
     "then": {
-      "mode_of_transport": "Rail",
+      "mode of transport": "Rail",
       "priority": "Economy Delivery"
     }
   },
@@ -27,11 +27,11 @@
     "if": {
       "distance": "long",
       "load": "heavy",
-      "carrier_availability": "low",
+      "carrier availability": "low",
       "cost": "high"
     },
     "then": {
-      "mode_of_transport": "Ship",
+      "mode of transport": "Ship",
       "priority": "Low Priority Delivery"
     }
   },
@@ -39,11 +39,11 @@
     "if": {
       "distance": "short",
       "load": "urgent",
-      "carrier_availability": "high",
+      "carrier availability": "high",
       "cost": "medium"
     },
     "then": {
-      "mode_of_transport": "Air",
+      "mode of transport": "Air",
       "priority": "High Priority Express Delivery"
     }
   },
@@ -51,11 +51,11 @@
     "if": {
       "distance": "long",
       "load": "medium",
-      "carrier_availability": "medium",
+      "carrier availability": "medium",
       "cost": "medium"
     },
     "then": {
-      "mode_of_transport": "Rail",
+      "mode of transport": "Rail",
       "priority": "Standard Delivery"
     }
   },
@@ -63,11 +63,11 @@
     "if": {
       "distance": "medium",
       "load": "heavy",
-      "carrier_availability": "low",
+      "carrier availability": "low",
       "cost": "high"
     },
     "then": {
-      "mode_of_transport": "Ship",
+      "mode of transport": "Ship",
       "priority": "Bulk Delivery"
     }
   },
@@ -75,11 +75,11 @@
     "if": {
       "distance": "short",
       "load": "light",
-      "carrier_availability": "low",
+      "carrier availability": "low",
       "cost": "low"
     },
     "then": {
-      "mode_of_transport": "Bike",
+      "mode of transport": "Bike",
       "priority": "Eco-Friendly Delivery"
     }
   }

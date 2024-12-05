@@ -3,7 +3,7 @@
     "if": {
       "issue": "inventory shortage",
       "cause": "unexpected demand",
-      "response_time": "slow"
+      "response time": "slow"
     },
     "then": {
       "diagnosis": "Insufficient buffer stock for demand spikes.",
@@ -14,7 +14,7 @@
     "if": {
       "issue": "transport delay",
       "cause": "carrier unavailability",
-      "response_time": "moderate"
+      "response time": "moderate"
     },
     "then": {
       "diagnosis": "Logistics redundancy failure.",
@@ -25,7 +25,7 @@
     "if": {
       "issue": "quality issue",
       "cause": "supplier negligence",
-      "response_time": "fast"
+      "response time": "fast"
     },
     "then": {
       "diagnosis": "Supplier failed quality control.",
@@ -36,7 +36,7 @@
     "if": {
       "issue": "inventory surplus",
       "cause": "over-ordering",
-      "response_time": "moderate"
+      "response time": "moderate"
     },
     "then": {
       "diagnosis": "Excess stock due to misaligned demand planning.",
@@ -47,7 +47,7 @@
     "if": {
       "issue": "cost increase",
       "cause": "transport cost hike",
-      "response_time": "moderate"
+      "response time": "moderate"
     },
     "then": {
       "diagnosis": "Dependency on high-cost transport modes.",
@@ -58,7 +58,7 @@
     "if": {
       "issue": "damaged goods",
       "cause": "improper packaging",
-      "response_time": "fast"
+      "response time": "fast"
     },
     "then": {
       "diagnosis": "Packaging failure leading to product damage.",
