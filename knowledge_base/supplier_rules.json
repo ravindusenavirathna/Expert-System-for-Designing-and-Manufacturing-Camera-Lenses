@@ -32,7 +32,7 @@
   {
     "if": {
       "cost": "low",
-      "quality": "medium",
+      "quality": "average",
       "reliability": "average",
       "sustainability": "average",
       "delivery time": "long"
@@ -52,7 +52,7 @@
   {
     "if": {
       "cost": "medium",
-      "quality": "medium",
+      "quality": "average",
       "reliability": "average",
       "sustainability": "good",
       "delivery time": "short"

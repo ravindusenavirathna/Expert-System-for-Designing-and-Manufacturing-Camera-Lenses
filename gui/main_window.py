@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
 
         # Context Selection
         context_layout = QHBoxLayout()
-        context_label = QLabel("Select Context:")
+        context_label = QLabel(" ")
         context_label.setStyleSheet("font-size: 16px; color: #f5f5f5;")
         self.context_selector = QComboBox()
         self.context_selector.addItems(
@@ -171,57 +171,6 @@ class MainWindow(QMainWindow):
             dropdown.addItems(options)
             self.input_fields[field] = dropdown
             self.form_layout.addRow(QLabel(f"{field}:"), dropdown)
-
-    # def evaluate(self):
-    #     """
-    #     Evaluate criteria using the selected rule engine.
-    #     Handle missing or incomplete user inputs by predicting values.
-    #     """
-    #     if not self.current_engine:
-    #         self.status_bar.showMessage("No context selected.", 3000)
-    #         return
-
-    #     # Retrieve user inputs
-
-    #     criteria = {
-    #         field.lower(): dropdown.currentText().strip().lower()
-    #         for field, dropdown in self.input_fields.items()
-    #     }
-
-    #     print(f"Evaluating with criteria: {criteria}")
-
-    #     # Validate inputs and predict missing values
-    #     predicted_criteria = self.predict_missing_values(criteria)
-
-    #     # Evaluate using the current rule engine
-    #     result = self.current_engine.evaluate(predicted_criteria)
-
-    #     # Display the result
-    #     msg_box = QMessageBox(self)
-    #     msg_box.setStyleSheet(STYLESHEET)
-    #     msg_box.setWindowTitle("Evaluation Result")
-
-    #     if result["exact_match"]:
-    #         msg_box.setText(f"""
-    #             <div style="font-size: 14px; font-weight: bold; color: #4CAF50;">
-    #                 <p><strong>Recommendation:</strong> {result['exact_match']}</p>
-    #                 <p style="font-size: 12px; color: #555555;">
-    #                     The recommendation exactly matches the criteria based on the provided information.
-    #                 </p>
-    #             </div>
-    #         """)
-    #     else:
-    #         msg_box.setText(f"""
-    #             <div style="font-size: 14px; font-weight: bold; color: #FF9800;">
-    #                 <p><strong>Suggestion:</strong> {result['suggestion']}</p>
-    #                 <p style="font-size: 12px; color: #555555;">
-    #                     Based on your criteria, the best match is a suggestion.
-    #                     Match Score: <strong>{result['match_score']}</strong>.
-    #                 </p>
-    #             </div>
-    #         """)
-
-    #     msg_box.exec_()
 
     def evaluate(self):
         """
