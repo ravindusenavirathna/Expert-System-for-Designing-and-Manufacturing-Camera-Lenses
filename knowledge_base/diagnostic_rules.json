@@ -1,0 +1,68 @@
+[
+  {
+    "if": {
+      "issue": "inventory shortage",
+      "cause": "unexpected demand",
+      "response_time": "slow"
+    },
+    "then": {
+      "diagnosis": "Insufficient buffer stock for demand spikes.",
+      "recommendation": "Increase safety stock and improve forecasting accuracy."
+    }
+  },
+  {
+    "if": {
+      "issue": "transport delay",
+      "cause": "carrier unavailability",
+      "response_time": "moderate"
+    },
+    "then": {
+      "diagnosis": "Logistics redundancy failure.",
+      "recommendation": "Diversify carrier options and improve scheduling."
+    }
+  },
+  {
+    "if": {
+      "issue": "quality issue",
+      "cause": "supplier negligence",
+      "response_time": "fast"
+    },
+    "then": {
+      "diagnosis": "Supplier failed quality control.",
+      "recommendation": "Conduct stricter audits and enforce penalties."
+    }
+  },
+  {
+    "if": {
+      "issue": "inventory surplus",
+      "cause": "over-ordering",
+      "response_time": "moderate"
+    },
+    "then": {
+      "diagnosis": "Excess stock due to misaligned demand planning.",
+      "recommendation": "Recalibrate order quantities and implement just-in-time principles."
+    }
+  },
+  {
+    "if": {
+      "issue": "cost increase",
+      "cause": "transport cost hike",
+      "response_time": "moderate"
+    },
+    "then": {
+      "diagnosis": "Dependency on high-cost transport modes.",
+      "recommendation": "Negotiate contracts and explore alternative modes of delivery."
+    }
+  },
+  {
+    "if": {
+      "issue": "damaged goods",
+      "cause": "improper packaging",
+      "response_time": "fast"
+    },
+    "then": {
+      "diagnosis": "Packaging failure leading to product damage.",
+      "recommendation": "Enhance packaging standards and train staff on handling procedures."
+    }
+  }
+]

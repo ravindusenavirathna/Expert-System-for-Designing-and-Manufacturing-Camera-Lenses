@@ -1,14 +1,11 @@
-import sys
+# main.py
+
+from gui.main_window import MainWindow
 from PyQt5.QtWidgets import QApplication
-from gui import LensDesignApp
+import sys
 
 if __name__ == "__main__":
-    # Create the QApplication instance
     app = QApplication(sys.argv)
-
-    # Create and show the main window
-    main_window = LensDesignApp()
-    main_window.show()
-
-    # Execute the application
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec_())

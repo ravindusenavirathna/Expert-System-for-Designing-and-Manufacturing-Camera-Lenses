@@ -1,0 +1,72 @@
+[
+  {
+    "if": {
+      "cost": "low",
+      "quality": "excellent",
+      "reliability": "excellent",
+      "sustainability": "outstanding",
+      "delivery_time": "short"
+    },
+    "then": "Supplier Alpha is the best choice."
+  },
+  {
+    "if": {
+      "cost": "medium",
+      "quality": "high",
+      "reliability": "good",
+      "sustainability": "good",
+      "delivery_time": "medium"
+    },
+    "then": "Supplier Beta is recommended for balanced options."
+  },
+  {
+    "if": {
+      "cost": "high",
+      "quality": "excellent",
+      "reliability": "excellent",
+      "sustainability": "outstanding",
+      "delivery_time": "short"
+    },
+    "then": "Supplier Delta is a premium choice for critical projects."
+  },
+  {
+    "if": {
+      "cost": "low",
+      "quality": "medium",
+      "reliability": "average",
+      "sustainability": "average",
+      "delivery_time": "long"
+    },
+    "then": "Supplier Gamma is suitable for cost-sensitive projects."
+  },
+  {
+    "if": {
+      "cost": "high",
+      "quality": "low",
+      "reliability": "poor",
+      "sustainability": "poor",
+      "delivery_time": "long"
+    },
+    "then": "No suitable supplier found. Consider renegotiating terms."
+  },
+  {
+    "if": {
+      "cost": "medium",
+      "quality": "medium",
+      "reliability": "average",
+      "sustainability": "good",
+      "delivery_time": "short"
+    },
+    "then": "Supplier Epsilon is a viable option for mid-range projects."
+  },
+  {
+    "if": {
+      "cost": "low",
+      "quality": "high",
+      "reliability": "excellent",
+      "sustainability": "good",
+      "delivery_time": "medium"
+    },
+    "then": "Supplier Zeta balances quality and cost effectively."
+  }
+]

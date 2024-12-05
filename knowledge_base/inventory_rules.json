@@ -1,0 +1,68 @@
+[
+  {
+    "if": {
+      "demand_forecast": "high",
+      "stock_level": "low",
+      "lead_time": "short"
+    },
+    "then": {
+      "action": "Place an urgent order.",
+      "recommended_stock": "Increase to 150% of forecasted demand."
+    }
+  },
+  {
+    "if": {
+      "demand_forecast": "low",
+      "stock_level": "high",
+      "lead_time": "long"
+    },
+    "then": {
+      "action": "Halt new orders.",
+      "recommended_stock": "Reduce stock by 30%."
+    }
+  },
+  {
+    "if": {
+      "demand_forecast": "medium",
+      "stock_level": "medium",
+      "lead_time": "medium"
+    },
+    "then": {
+      "action": "Maintain current stock levels.",
+      "recommended_stock": "Match forecast demand."
+    }
+  },
+  {
+    "if": {
+      "demand_forecast": "high",
+      "stock_level": "medium",
+      "lead_time": "long"
+    },
+    "then": {
+      "action": "Place a priority order.",
+      "recommended_stock": "Stock to cover 120% of forecast demand."
+    }
+  },
+  {
+    "if": {
+      "demand_forecast": "low",
+      "stock_level": "low",
+      "lead_time": "short"
+    },
+    "then": {
+      "action": "No immediate action required.",
+      "recommended_stock": "Maintain current levels."
+    }
+  },
+  {
+    "if": {
+      "demand_forecast": "medium",
+      "stock_level": "high",
+      "lead_time": "short"
+    },
+    "then": {
+      "action": "Gradually lower stock levels.",
+      "recommended_stock": "Target a 15% reduction in stock."
+    }
+  }
+]

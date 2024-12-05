@@ -1,0 +1,86 @@
+[
+  {
+    "if": {
+      "distance": "short",
+      "load": "light",
+      "carrier_availability": "high",
+      "cost": "low"
+    },
+    "then": {
+      "mode_of_transport": "Truck",
+      "priority": "Standard Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "medium",
+      "load": "medium",
+      "carrier_availability": "medium",
+      "cost": "medium"
+    },
+    "then": {
+      "mode_of_transport": "Rail",
+      "priority": "Economy Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "long",
+      "load": "heavy",
+      "carrier_availability": "low",
+      "cost": "high"
+    },
+    "then": {
+      "mode_of_transport": "Ship",
+      "priority": "Low Priority Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "short",
+      "load": "urgent",
+      "carrier_availability": "high",
+      "cost": "medium"
+    },
+    "then": {
+      "mode_of_transport": "Air",
+      "priority": "High Priority Express Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "long",
+      "load": "medium",
+      "carrier_availability": "medium",
+      "cost": "medium"
+    },
+    "then": {
+      "mode_of_transport": "Rail",
+      "priority": "Standard Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "medium",
+      "load": "heavy",
+      "carrier_availability": "low",
+      "cost": "high"
+    },
+    "then": {
+      "mode_of_transport": "Ship",
+      "priority": "Bulk Delivery"
+    }
+  },
+  {
+    "if": {
+      "distance": "short",
+      "load": "light",
+      "carrier_availability": "low",
+      "cost": "low"
+    },
+    "then": {
+      "mode_of_transport": "Bike",
+      "priority": "Eco-Friendly Delivery"
+    }
+  }
+]
